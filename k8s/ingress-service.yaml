@@ -21,8 +21,8 @@ spec:
               service:
                 # UPDATE SERVICE FIELDS
                 name: client-cluster-ip-service
-                port: 3000
-                  
+                port:
+                  number: 3000
           - path: /api/?(.*)
             # UPDATE PATH
             pathType: Prefix
@@ -31,5 +31,5 @@ spec:
               service:
                 # UPDATE SERVICE FIELDS
                 name: server-cluster-ip-service
-                port: 5000
-                
+                port:
+                  number: 5000
