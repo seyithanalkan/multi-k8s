@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: sythnlkn/multi-client
+          image: cygnetops/multi-client-k8s
           ports:
             - containerPort: 3000
           livenessProbe:
