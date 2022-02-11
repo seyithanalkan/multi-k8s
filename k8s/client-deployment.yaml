@@ -1,6 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata :
+metadata:
   name: client-deployment
 spec:
   replicas: 3
@@ -8,19 +8,12 @@ spec:
     matchLabels:
       component: web
   template:
-    metadata: 
+    metadata:
       labels:
         component: web
     spec:
       containers:
         - name: client
-          image: cygnetops/multi-client-k8s
+          image: stephengrider/multi-client
           ports:
             - containerPort: 3000
-          livenessProbe:
-            httpGet:
-              path: "/health-check"
-              port: 3000
-            initialDelaySeconds: 10
-            timeoutSeconds: 5
-            

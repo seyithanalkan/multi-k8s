@@ -1,24 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: server-deployment
 spec:
   replicas: 3
   selector:
-    matchLabels: 
+    matchLabels:
       component: server
-
   template:
     metadata:
       labels:
         component: server
-    spec: 
+    spec:
       containers:
         - name: server
-          image: sythnlkn/multi-server
+          image: stephengrider/multi-server
           ports:
             - containerPort: 5000
-          env: 
+          env:
             - name: REDIS_HOST
               value: redis-cluster-ip-service
             - name: REDIS_PORT
@@ -30,9 +29,9 @@ spec:
             - name: PGPORT
               value: '5432'
             - name: PGDATABASE
-              value: postgres 
-            - name: POSTGRES_PASSWORD
-              valueFrom: 
+              value: postgres
+            - name: PGPASSWORD
+              valueFrom:
                 secretKeyRef:
                   name: pgpassword
                   key: PGPASSWORD

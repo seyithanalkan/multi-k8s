@@ -8,14 +8,14 @@ spec:
     matchLabels:
       component: postgres
   template:
-    metadata: 
+    metadata:
       labels:
         component: postgres
     spec:
       volumes:
         - name: postgres-storage
-          persistentVolumeClaim: 
-            claimName: database-persistent-volume-claim  
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim
       containers:
         - name: postgres
           image: postgres
@@ -25,10 +25,9 @@ spec:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
               subPath: postgres
-          env: 
-            - name: POSTGRES_PASSWORD
+          env:
+            - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
                   name: pgpassword
                   key: PGPASSWORD
-
